@@ -161,10 +161,13 @@ The Returned color-palette has the same format as `solarized-color-palette'"
       (base02  . ,(solarized-color-blend darkest-base brightest-base 0.97 2))
       (base01  . ,(solarized-color-blend darkest-base brightest-base 0.65 2))
       (base00  . ,(solarized-color-blend darkest-base brightest-base 0.60 2))
+      (base05 . ,(solarized-color-blend darkest-base brightest-base 0.48 2))
       (base0   . ,(solarized-color-blend darkest-base brightest-base 0.48 2))
       (base1   . ,(solarized-color-blend darkest-base brightest-base 0.42 2))
       (base2   . ,(solarized-color-blend darkest-base brightest-base 0.06 2))
       (base3   . ,(solarized-color-blend darkest-base brightest-base 0.00 2))
+      (base4 . ,(solarized-color-blend darkest-base brightest-base 0.12 2))
+      (base5 . ,(solarized-color-blend darkest-base brightest-base 0.60 2))
 
       ;; Solarized accented colors
       (yellow    . ,yellow)
@@ -246,6 +249,8 @@ customize the resulting theme."
             (variant ,variant)
             ,@(mapcar (lambda (elm) `(,(car elm) ,(cdr elm))) color-palette*)
 
+            (s-base05 base05)
+            (s-base04 base04)
             (s-base03 base03)
             (s-base02 base02)
             (s-base01 base01)
@@ -254,8 +259,12 @@ customize the resulting theme."
             (s-base2 base2)
             (s-base1 base1)
             (s-base0 base0)
+            (s-base4 base4)
+            (s-base5 base5)
 
             ;; Solarized palette names, use these instead of -fg -bg...
+            (base05 (if (eq variant 'light) s-base5 s-base05))
+            (base04 (if (eq variant 'light) s-base4 s-base04))
             (base03 (if (eq variant 'light) s-base3 s-base03))
             (base02 (if (eq variant 'light) s-base2 s-base02))
             (base01 (if (eq variant 'light) s-base1 s-base01))
@@ -264,6 +273,8 @@ customize the resulting theme."
             (base1 (if (eq variant 'light) s-base01 s-base1))
             (base2 (if (eq variant 'light) s-base02 s-base2))
             (base3 (if (eq variant 'light) s-base03 s-base3))
+            (base4 (if (eq variant 'light) s-base04 s-base4))
+            (base5 (if (eq variant 'light) s-base05 s-base5))
 
             ;; Line drawing color
             ;;
