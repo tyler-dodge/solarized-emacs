@@ -33,12 +33,12 @@
 ;;;; Built-in
 ;;;;; basic faces
      '(button ((t (:underline t))))
-     `(cursor ((,class (:foreground ,base03 :background ,base0
+     `(cursor ((,class (:foreground ,base0 :background ,base03
                                     :inverse-video t))))
      `(default ((,class (:foreground ,base0 :background ,base03 :height 120 :width normal :family "Source Code Pro"))))
      `(error ((,class (:foreground ,orange))))
      `(escape-glyph ((,class (:foreground ,violet))))
-     `(fringe ((,class (:foreground ,s-fringe-fg :background ,s-fringe-bg))))
+     `(fringe ((,class (:foreground ,base0  :background ,base4))))
      `(header-line
        ((,class (:inverse-video unspecified
                                 :overline nil
@@ -148,7 +148,7 @@
                                                        :foreground ,base01))))
      `(ecb-directory-not-accessible-face ((,class (:inherit ecb-directories-general-face
                                                             :foreground ,base01))))
-     `(ecb-bucket-node-face ((,class (:inherit ecb-default-general-face 
+     `(ecb-bucket-node-face ((,class (:inherit ecb-default-general-face
                                                :foreground ,blue))))
      `(ecb-tag-header-face ((,class (:background ,base02))))
      `(ecb-analyse-bucket-element-face ((,class (:inherit ecb-analyse-general-face
@@ -341,8 +341,7 @@
      `(cfw:face-today-title ((,class (:background ,yellow-lc
                                                   :foreground ,yellow-hc ))))
      `(cfw:face-toolbar ((,class (:background ,base02 :foreground ,base0))))
-     `(cfw:face-toolbar-button-off ((,class (:background ,yellow-lc :foreground ,yellow-hc
-                                                         ))))
+     `(cfw:face-toolbar-button-off ((,class (:background ,yellow-lc :foreground ,yellow-hc))))
      `(cfw:face-toolbar-button-on ((,class (:background ,yellow-hc :foreground ,yellow-lc
                                                         ))))
 ;;;;; cider
@@ -378,13 +377,13 @@
      `(company-template-field ((,class (:background ,yellow :foreground ,base02))))
      `(company-tooltip-annotation ((,class (:foreground ,cyan))))
      `(company-tooltip-annotation-selection ((,class (:foreground ,cyan))))
-     `(company-tooltip ((,class nil)))
-     `(company-tooltip-common ((,class nil)))
+     `(company-tooltip ((,class (:background ,base02))))
+     `(company-tooltip-common ((,class (:underline (:line-width 1 :color ,magenta)))))
      `(company-tooltip-common-selection ((,class nil)))
      `(company-tooltip-mouse ((,class (:background ,cyan-2bg :foreground ,cyan-2fg))))
      `(company-tooltip-search ((,class (:foreground ,magenta))))
      `(company-tooltip-search-selection ((,class (:foreground ,magenta ))))
-     `(company-tooltip-selection ((,class (:background "black" :box nil))))
+     `(company-tooltip-selection ((,class (:background ,base02 :foreground ,base1 :box (:color ,base01 :line-width -1)))))
 
 ;;;;; cperl-mode
      `(cperl-array-face ((,class (:background unspecified :foreground ,blue))))
@@ -563,6 +562,8 @@
      `(fixmee-notice-face ((,class (:background nil :foreground ,base1
                                                 :underline nil :slant italic ))))
 
+     `(empty-window-face ((,class (:background ,(solarized-color-blend base01 base03 0.1 2) :foreground ,base1))))
+     `(side-window-face ((,class (:background ,(solarized-color-blend base01 base03 0.1 2) :foreground ,base1))))
 ;;;;; flx
      `(flx-highlight-face ((,class (:foreground ,blue
                                                 :underline nil))))
@@ -573,18 +574,18 @@
         (,class (:foreground ,red-hc :background ,red-lc :underline t))))
      `(flycheck-error-list-error ((,class (:inherit error))))
      `(flycheck-warning
-       ((,class (:underline (:color "#006f50" :style wave) :inherit unspecified))))
+       ((,class (:underline (:color "#50BfA0" :style wave) :inherit unspecified))))
      `(flycheck-info
        ((,(append '((supports :underline (:style wave))) class)
          (:underline (:style wave :color ,(if solarized-emphasize-indicators
                                               blue base03)) :inherit unspecified))
         (,class (:foreground ,blue-hc :background ,blue-lc :underline t))))
      `(flycheck-fringe-error
-       ((,class (:background "#FF6E64" :foreground "black" :box nil :weight light))))
+       ((,class (:background "#FF6E64" :foreground "#222222" :box nil :weight normal))))
      `(flycheck-fringe-warning
-       ((,class (:background "#002900" :foreground "#aeaeae" :box (:line-width -1 :color "grey75") :weight normal))))
-     '(flycheck-inline-error ((t (:background "#5A0000" :foreground "gray" :box (:line-width -1 :color "black")))))
-     '(flycheck-inline-warning ((t (:inherit nil :background "#002900" :box (:line-width -1 :color "black")))))
+       ((,class (:background "#50BFA0" :foreground "#222222" :weight normal))))
+     '(flycheck-inline-error ((t (:background "#EEAAAA" :foreground "#222222" :box (:line-width -1 :color "black")))))
+     '(flycheck-inline-warning ((t (:inherit nil :foreground "#222222" :background "#70EFC0" :box (:line-width -1 :color "black")))))
      `(flycheck-fringe-info
        ((,class (:foreground ,(if solarized-emphasize-indicators
                                   blue-hc base01)
@@ -848,7 +849,7 @@
      `(highlight-symbol-face ((,class (:foreground ,magenta))))
 ;;;;; hl-line-mode
      `(hl-line
-       ((,class (:box (:line-width -1 :color "#001b26") 
+       ((,class (:box (:line-width -1 :color "#001b26")
                       :background ,base02))))
      `(hl-line-face
        ((,class (,@(and (>= emacs-major-version 27) '(:extend t))
@@ -1210,7 +1211,7 @@
      `(mew-face-eof-part ((,class (:foreground ,yellow))))
 ;;;;; mic-paren
      `(paren-face-match
-       ((,class (:foreground ,magenta :background unspecified
+       ((,class (:foreground ,magenta :background nil
                              :weight ,s-maybe-bold))))
      `(paren-face-mismatch
        ((,class (:foreground ,base02 :background ,red
@@ -1250,17 +1251,22 @@
      `(mu4e-cited-6-face ((,class (:foreground ,green :slant italic :weight normal))))
      `(mu4e-cited-7-face ((,class (:foreground ,blue :slant italic :weight normal))))
      `(mu4e-flagged-face ((,class (:foreground ,blue :weight normal))))
-     `(mu4e-unread-face ((,class (:foreground "#A3B4B6" :underline nil :weight normal))))
+     `(mu4e-unread-face ((,class (:foreground ,base1 :background ,base02 :underline nil :weight normal))))
      `(mu4e-view-url-number-face ((,class (:foreground ,yellow :weight normal))))
      `(mu4e-warning-face ((,class (:foreground ,red :slant normal ))))
      `(mu4e-header-highlight-face
        ((,class (,@(and (>= emacs-major-version 27) '(:extend t))
                  :inherit unspecified
-                 :foreground unspecified :background ,base02
+                 :foreground ,base03 :background ,base01
+                 :box (:line-width 1 :color ,base03)
                  :underline nil  :weight unspecified))))
+     `(mu4e-title-face ((,class (:height 1.5 :weight normal))))
+     `(mu4e-header-key-face ((,class (:foreground ,cyan :height 1.2 :weight normal))))
+     `(mu4e-header-value-face ((,class (:height 1.2 :foreground ,base0 :weight normal :slant normal))))
+     `(mu4e-contact-face ((,class (:height 1.2 :weight normal))))
      `(mu4e-view-contact-face ((,class (:foreground ,base0  :weight normal))))
      `(mu4e-view-header-key-face ((,class (:inherit message-header-name :weight normal))))
-     `(mu4e-view-header-value-face ((,class (:foreground ,cyan :weight normal :slant normal))))
+     `(mu4e-view-header-value-face ((,class (:foreground ,base0 :weight normal :slant normal))))
      `(mu4e-view-link-face ((,class (:inherit link))))
      `(mu4e-view-special-header-value-face ((,class (:foreground ,blue :weight normal :underline nil))))
 ;;;;; multiple-cursors
@@ -1375,26 +1381,26 @@
      `(org-formula ((,class (:foreground ,yellow))))
      `(org-headline-done ((,class (:foreground ,green))))
      `(org-hide ((,class (:foreground ,base03))))
-     `(org-level-1 ((,class (:inherit ,s-variable-pitch :foreground ,orange
+     `(org-level-1 ((,class (:inherit ,s-variable-pitch :foreground unspecified
                                       ,@(when solarized-scale-org-headlines
                                           (list :height solarized-height-plus-4))))))
-     `(org-level-2 ((,class (:inherit ,s-variable-pitch :foreground ,green
+     `(org-level-2 ((,class (:inherit ,s-variable-pitch :foreground unspecified
                                       ,@(when solarized-scale-org-headlines
                                           (list :height solarized-height-plus-3))))))
-     `(org-level-3 ((,class (:inherit ,s-variable-pitch :foreground ,blue
+     `(org-level-3 ((,class (:inherit ,s-variable-pitch :foreground unspecified
                                       ,@(when solarized-scale-org-headlines
                                           (list :height solarized-height-plus-2))))))
-     `(org-level-4 ((,class (:inherit ,s-variable-pitch :foreground ,yellow
+     `(org-level-4 ((,class (:inherit ,s-variable-pitch :foreground unspecified
                                       ,@(when solarized-scale-org-headlines
                                           (list :height solarized-height-plus-1))))))
      `(org-level-5 ((,class (:inherit ,s-variable-pitch
-                                      :foreground ,cyan))))
+                                      :foreground unspecified))))
      `(org-level-6 ((,class (:inherit ,s-variable-pitch
-                                      :foreground ,green))))
+                                      :foreground unspecified))))
      `(org-level-7 ((,class (:inherit ,s-variable-pitch
-                                      :foreground ,red))))
+                                      :foreground unspecified))))
      `(org-level-8 ((,class (:inherit ,s-variable-pitch
-                                      :foreground ,blue))))
+                                      :foreground unspecified))))
      `(org-link ((,class (:inherit link))))
      `(org-meta-line ((,class (:foreground ,base01 :slant italic))))
      `(org-macro ((,class (:foreground ,s-base1))))
@@ -1406,7 +1412,7 @@
      `(org-table ((,class (:background "#001b26" :foreground "#AAAAAA" :box nil :height 1.0))))
      `(org-tag ((,class ())))
      `(org-time-grid ((,class (:foreground ,base01))))
-     `(org-todo ((,class (:background "#005b46" :foreground "#A3B4B6" :box (:line-width -1 :color "black") :overline "black" :weight normal))))
+     `(org-todo ((,class (:background "#A0FbE6" :foreground "#222222" :box (:line-width -1 :color "black") :weight normal))))
      `(org-upcoming-deadline ((,class (:foreground ,yellow  :weight normal :underline nil))))
      `(org-warning ((,class (:foreground ,orange :weight normal :underline nil))))
      ;; org-habit
@@ -1453,7 +1459,7 @@
 ;;;;; outline-minor-faces
      `(outline-minor-0
        ((,class (,@(and (>= emacs-major-version 27) '(:extend t))
-                 
+
                  :background ,base02))))
      `(outline-minor-1
        ((,class (,@(and (>= emacs-major-version 27) '(:extend t))
@@ -1546,7 +1552,7 @@
      `(sh-heredoc ((,class (:foreground ,yellow ))))
 ;;;;; show-paren
      `(show-paren-match
-       ((,class (:background "#002b36"))))
+       ((,class (:underline nil :background nil :weight normal))))
      `(show-paren-mismatch
        ((,class (:foreground ,base02 :background ,red
                              :weight ,s-maybe-bold))))
@@ -1616,7 +1622,7 @@
      `(swiper-match-face-3 ((,class (:foreground ,yellow))))
      `(swiper-match-face-4 ((,class (:foreground ,yellow))))
 ;;;;; swoop
-     `(swoop-face-header-format-line ((,class (:foreground ,yellow 
+     `(swoop-face-header-format-line ((,class (:foreground ,yellow
                                                            :height unspecified))))
      `(swoop-face-line-buffer-name ((,class (:background ,base02 :foreground ,base1
                                                          :height unspecified))))
@@ -1948,7 +1954,9 @@
      `(yascroll:thumb-fringe
        ((,class (:foreground ,base01 :background ,base01))))
 ;;;;; yasnippet
-     `(yas-field-highlight-face ((,class (:inherit secondary-selection :background "#001b26"))))
+     `(yas-field-highlight-face ((,class (:inherit secondary-selection :background
+                                                   ,(solarized-color-blend base03 base00 0.95)
+                                                   :foreground unspecified))))
 ;;;;; zencoding
      `(zencoding-preview-input ((,class (:background ,base02 :box ,base1))))
 ;;;;; ztree
