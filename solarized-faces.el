@@ -623,7 +623,7 @@
        ((,class (:strike-through ,s-line))))
 ;;;;; git-commit
      `(git-commit-comment-action  ((,class (:foreground ,base0  ))))
-     `(git-commit-comment-branch ; obsolete
+     `(git-commit-comment-branch        ; obsolete
        ((,class (:foreground ,blue ))))
      `(git-commit-comment-branch-local
        ((,class (:foreground ,blue ))))
@@ -1546,6 +1546,10 @@
      `(rst-level-4 ((,class (:inherit org-level-4))))
      `(rst-level-5 ((,class (:inherit org-level-5))))
      `(rst-level-6 ((,class (:inherit org-level-6))))
+;;;;; selectrum-mode
+     `(selectrum-current-candidate ((,class (:weight bold :background ,base02 :underline t))))
+     `(selectrum-primary-highlight ((,class (:foreground ,base1))))
+     `(selectrum-secondary-highlight ((,class (:foreground ,yellow))))
 ;;;;; sh-mode
      `(sh-quoted-exec ((,class (:foreground ,violet ))))
      `(sh-escaped-newline ((,class (:foreground ,yellow ))))
@@ -1945,7 +1949,11 @@
      `(whitespace-empty ((,class (:background unspecified :foreground ,red-lc
                                               :inverse-video t))))
      `(whitespace-space-after-tab ((,class (:background unspecified :foreground ,orange
-                                                        :inverse-video t ))))
+                                                        :inverse-video t ))))   
+;;;;; window-divider-mode
+     `(window-divider ((,class (:foreground ,s-mode-line-bg))))
+     `(window-divider-first-pixel ((,class (:foreground ,s-mode-line-bg))))
+     `(window-divider-last-pixel ((,class (:foreground ,s-mode-line-bg))))
 ;;;;; window-number-mode
      `(window-number-face ((,class (:foreground ,green))))
 ;;;;; yascroll
